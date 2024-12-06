@@ -13,7 +13,17 @@ def crear_csv():
             "El clima está perfecto para una caminata",
             "La economía global está cambiando rápidamente",
             "Disfruté mucho la película que vi anoche",
-            "La inteligencia artificial está revolucionando el mundo"
+            "La inteligencia artificial está revolucionando el mundo",
+            "Estoy leyendo un libro fascinante sobre historia",
+            "La música en el concierto fue espectacular",
+            "El nuevo teléfono tiene características impresionantes",
+            "La política actual es muy complicada",
+            "Hice una receta deliciosa para la cena",
+            "El turismo está creciendo en muchas ciudades",
+            "La salud mental es muy importante",
+            "El arte moderno es muy interesante",
+            "La educación en línea está ganando popularidad",
+            "La moda de este año es muy colorida"
         ],
         'label': [
             "tecnología",
@@ -25,7 +35,17 @@ def crear_csv():
             "estilo de vida",
             "finanzas",
             "entretenimiento",
-            "tecnología"
+            "tecnología",
+            "cultura",
+            "entretenimiento",
+            "tecnología",
+            "política",
+            "estilo de vida",
+            "viajes",
+            "salud",
+            "arte",
+            "educación",
+            "moda"
         ]
     }
     df = pd.DataFrame(datos)
@@ -49,10 +69,10 @@ def main():
     X = vectorizer.transform(datos['tweet'])
     
     # Clasificar tweets
-    datos['etiqueta_predicha'] = datos['tweet'].apply(classify_tweet)
+    datos['predicted_label'] = datos['tweet'].apply(classify_tweet)
     
     # Mostrar resultados
-    print(datos[['tweet', 'label', 'etiqueta_predicha']])
+    print(datos[['tweet', 'label', 'predicted_label']])
 
 if __name__ == "__main__":
     main()
