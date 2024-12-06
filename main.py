@@ -111,7 +111,8 @@ def main():
     # Clasificar tweets
     datos['predicted_label'] = datos['tweet'].apply(classify_tweet)
     
-    # Mostrar resultados
+    # Mostrar todos los resultados
+    pd.set_option('display.max_rows', None)
     print(datos[['tweet', 'label', 'predicted_label']])
 
 if __name__ == "__main__":

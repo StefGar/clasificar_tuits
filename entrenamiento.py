@@ -60,6 +60,10 @@ y_pred = model.predict(X_test_vec)
 accuracy = accuracy_score(y_test, y_pred)
 print(f'Precisión: {accuracy}')
 
+# Verificar predicciones
+print("Predicciones:", y_pred)
+print("Etiquetas reales:", y_test.values)
+
 # Función para clasificar un nuevo tweet
 def classify_tweet(tweet):
     tweet = preprocess_text(tweet)
