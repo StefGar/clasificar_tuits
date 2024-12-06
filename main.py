@@ -130,7 +130,7 @@ def main():
     pd.set_option('display.max_columns', None)
     pd.set_option('display.width', None)
     pd.set_option('display.max_colwidth', None)
-    print(datos[['tweet', 'label', 'predicted_label']].to_string(index=False))
+    print(datos[['tweet', 'label', 'predicted_label']].head().to_string(index=False))
     
     print("End of the main function")
 
