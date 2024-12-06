@@ -61,7 +61,6 @@ model.fit(X_train_vec, y_train)
 # Predicción y evaluación
 y_pred = model.predict(X_test_vec)
 accuracy = accuracy_score(y_test, y_pred)
-print("Start of the training script")
 print(f'Accuracy: {accuracy:.2f}')  # Display accuracy with two decimals
 
 # Verificar predicciones
