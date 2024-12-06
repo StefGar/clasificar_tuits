@@ -10,7 +10,7 @@ def crear_csv():
             "Tuve una cena maravillosa con la familia",
             "Los precios de Bitcoin están subiendo"
         ],
-        'etiqueta': [
+        'label': [  # Changed from 'etiqueta' to 'label'
             "tecnología",
             "deportes",
             "tecnología",
@@ -30,10 +30,9 @@ def main():
     # Cargar datos
     datos = pd.read_csv('tweets.csv')
     
-    # Verificar si la columna 'etiqueta' existe
-    print(datos.columns)  # Debugging line to print the columns of the CSV file
-    if 'etiqueta' not in datos.columns:
-        raise KeyError("La columna 'etiqueta' no existe en el archivo 'tweets.csv'.")
+    # Verificar si la columna 'label' existe
+    if 'label' not in datos.columns:
+        raise KeyError("La columna 'label' no existe en el archivo 'tweets.csv'.")
     
     # Preprocesar y vectorizar datos
     datos['tweet'] = datos['tweet'].apply(preprocess_text)
@@ -43,7 +42,7 @@ def main():
     datos['etiqueta_predicha'] = datos['tweet'].apply(classify_tweet)
     
     # Mostrar resultados
-    print(datos[['tweet', 'etiqueta', 'etiqueta_predicha']])
+    print(datos[['tweet', 'label', 'etiqueta_predicha']])
 
 if __name__ == "__main__":
     main()

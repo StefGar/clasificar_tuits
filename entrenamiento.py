@@ -8,8 +8,12 @@ import nltk
 from nltk.corpus import stopwords
 import string
 
-# Descargar stopwords
-nltk.download('stopwords')
+# Descargar stopwords si no están disponibles
+try:
+    stop_words = set(stopwords.words('spanish'))
+except LookupError:
+    nltk.download('stopwords')
+    stop_words = set(stopwords.words('spanish'))
 
 # Asegurarse de que el archivo CSV exista
 if not os.path.exists('tweets.csv'):
@@ -21,12 +25,11 @@ if not os.path.exists('tweets.csv'):
     raise FileNotFoundError("El archivo 'tweets.csv' no existe y no pudo ser creado.")
 
 # Cargar datos
-datos = pd.read_csv('tweets.csv')  # Asegúrate de tener un archivo tweets.csv con columnas 'tweet' y 'etiqueta'
+datos = pd.read_csv('tweets.csv')  # Asegúrate de tener un archivo tweets.csv con columnas 'tweet' y 'label'
 
 # Asegurarse de que el archivo CSV tenga las columnas correctas
-print(datos.columns)  # Debugging line to print the columns of the CSV file
-if 'etiqueta' not in datos.columns:
-    raise KeyError("La columna 'etiqueta' no existe en el archivo 'tweets.csv'.")
+if 'label' not in datos.columns:
+    raise KeyError("La columna 'label' no existe en el archivo 'tweets.csv'.")
 
 # Preprocesamiento de texto
 def preprocess_text(texto):
@@ -35,14 +38,13 @@ def preprocess_text(texto):
     # Eliminar puntuación
     texto = texto.translate(str.maketrans('', '', string.punctuation))
     # Eliminar stopwords
-    stop_words = set(stopwords.words('spanish'))
     texto = ' '.join([palabra for palabra in texto.split() if palabra not in stop_words])
     return texto
 
 datos['tweet'] = datos['tweet'].apply(preprocess_text)
 
 # Dividir datos en entrenamiento y prueba
-X_train, X_test, y_train, y_test = train_test_split(datos['tweet'], datos['etiqueta'], test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(datos['tweet'], datos['label'], test_size=0.2, random_state=42)
 
 # Vectorización
 vectorizer = TfidfVectorizer()
@@ -56,7 +58,7 @@ model.fit(X_train_vec, y_train)
 # Predicción y evaluación
 y_pred = model.predict(X_test_vec)
 accuracy = accuracy_score(y_test, y_pred)
-print(f'Precisi��n: {accuracy}')
+print(f'Precisión: {accuracy}')
 
 # Función para clasificar un nuevo tweet
 def classify_tweet(tweet):
