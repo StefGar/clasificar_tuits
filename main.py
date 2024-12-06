@@ -30,6 +30,10 @@ def main():
     # Cargar datos
     datos = pd.read_csv('tweets.csv')
     
+    # Verificar si la columna 'etiqueta' existe
+    if 'etiqueta' not in datos.columns:
+        raise KeyError("La columna 'etiqueta' no existe en el archivo 'tweets.csv'.")
+    
     # Preprocesar y vectorizar datos
     datos['tweet'] = datos['tweet'].apply(preprocess_text)
     X = vectorizer.transform(datos['tweet'])
