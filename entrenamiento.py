@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -9,6 +10,12 @@ import string
 
 # Descargar stopwords
 nltk.download('stopwords')
+
+def create_csv():
+    # ...existing code...
+
+if not os.path.exists('tweets.csv'):
+    create_csv()
 
 # Cargar datos
 data = pd.read_csv('tweets.csv')  # Asegúrate de tener un archivo tweets.csv con columnas 'tweet' y 'label'
