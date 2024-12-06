@@ -8,6 +8,8 @@ import nltk
 from nltk.corpus import stopwords
 import string
 
+print("Start of the training script")
+
 # Descargar stopwords si no están disponibles
 try:
     stop_words = set(stopwords.words('spanish'))
@@ -58,11 +60,13 @@ model.fit(X_train_vec, y_train)
 # Predicción y evaluación
 y_pred = model.predict(X_test_vec)
 accuracy = accuracy_score(y_test, y_pred)
-print(f'Precisión: {accuracy:.2f}')  # Mostrar precisión con dos decimales
+print(f'Accuracy: {accuracy:.2f}')  # Display accuracy with two decimals
 
 # Verificar predicciones
-print("Predicciones:", y_pred[:10])  # Mostrar las primeras 10 predicciones
-print("Etiquetas reales:", y_test.values[:10])  # Mostrar las primeras 10 etiquetas reales
+print("Predictions:", y_pred[:10])  # Display the first 10 predictions
+print("Actual labels:", y_test.values[:10])  # Display the first 10 actual labels
+
+print("End of the training script")
 
 # Función para clasificar un nuevo tweet
 def classify_tweet(tweet):

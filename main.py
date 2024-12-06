@@ -167,12 +167,13 @@ if not os.path.exists('tweets.csv'):
 from entrenamiento import preprocess_text, vectorizer, model, classify_tweet
 
 def main():
+    print("Start of the main function")
     # Cargar datos
     datos = pd.read_csv('tweets.csv')
     
     # Verificar si la columna 'label' existe
     if 'label' not in datos.columns:
-        raise KeyError("La columna 'label' no existe en el archivo 'tweets.csv'.")
+        raise KeyError("The 'label' column does not exist in the 'tweets.csv' file.")
     
     # Preprocesar y vectorizar datos
     datos['tweet'] = datos['tweet'].apply(preprocess_text)
@@ -184,6 +185,7 @@ def main():
     # Mostrar todos los resultados
     pd.set_option('display.max_rows', None)
     print(datos[['tweet', 'label', 'predicted_label']])
+    print("End of the main function")
 
 if __name__ == "__main__":
     main()
