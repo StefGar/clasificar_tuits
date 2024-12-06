@@ -125,19 +125,12 @@ def main():
     # Clasificar tweets
     datos['predicted_label'] = datos['tweet'].apply(lambda tweet: classify_tweet(tweet))
     
-    # Mostrar todos los resultados
+    # Mostrar todos los resultados en formato tabular
     pd.set_option('display.max_rows', None)
     pd.set_option('display.max_columns', None)
     pd.set_option('display.width', None)
     pd.set_option('display.max_colwidth', None)
-    print(datos[['tweet', 'label', 'predicted_label']])
-    
-    # Display all tweets and their labels
-    for index, row in datos.iterrows():
-        print(f"Tweet: {row['tweet']}, Label: {row['label']}, Predicted: {row['predicted_label']}")
-    
-    # Display all tweets in a list format
-    display_all_tweets(datos)
+    print(datos[['tweet', 'label', 'predicted_label']].to_string(index=False))
     
     print("End of the main function")
 
