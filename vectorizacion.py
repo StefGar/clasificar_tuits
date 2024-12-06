@@ -1,1 +1,1 @@
-# This file is no longer needed as vectorization and model training are handled in main.py
+# Este archivo ya no es necesario ya que la vectorización y el entrenamiento del modelo se manejan en main.py

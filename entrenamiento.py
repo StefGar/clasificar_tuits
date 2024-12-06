@@ -11,14 +11,14 @@ import string
 # Descargar stopwords
 nltk.download('stopwords')
 
-# Ensure the CSV file exists
+# Asegurarse de que el archivo CSV exista
 if not os.path.exists('tweets.csv'):
     from main import create_csv
     create_csv()
 
-# Check again if the file was created successfully
+# Verificar nuevamente si el archivo fue creado exitosamente
 if not os.path.exists('tweets.csv'):
-    raise FileNotFoundError("The file 'tweets.csv' does not exist and could not be created.")
+    raise FileNotFoundError("El archivo 'tweets.csv' no existe y no pudo ser creado.")
 
 # Cargar datos
 data = pd.read_csv('tweets.csv')  # Asegúrate de tener un archivo tweets.csv con columnas 'tweet' y 'label'
@@ -51,7 +51,7 @@ model.fit(X_train_vec, y_train)
 # Predicción y evaluación
 y_pred = model.predict(X_test_vec)
 accuracy = accuracy_score(y_test, y_pred)
-print(f'Accuracy: {accuracy}')
+print(f'Precisión: {accuracy}')
 
 # Función para clasificar un nuevo tweet
 def classify_tweet(tweet):
@@ -62,4 +62,4 @@ def classify_tweet(tweet):
 
 # Ejemplo de uso
 new_tweet = "This is an example tweet about machine learning."
-print(f'Topic: {classify_tweet(new_tweet)}')
+print(f'Tema: {classify_tweet(new_tweet)}')

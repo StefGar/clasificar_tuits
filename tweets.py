@@ -1,1 +1,1 @@
-# This file is no longer needed as CSV creation is handled in main.py
+# Este archivo ya no es necesario ya que la creación del CSV se maneja en main.py
