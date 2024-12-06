@@ -8,14 +8,24 @@ def crear_csv():
             "Acabo de ver un gran partido de fútbol",
             "Python es un lenguaje de programación increíble",
             "Tuve una cena maravillosa con la familia",
-            "Los precios de Bitcoin están subiendo"
+            "Los precios de Bitcoin están subiendo",
+            "Hoy aprendí algo nuevo sobre la programación",
+            "El clima está perfecto para una caminata",
+            "La economía global está cambiando rápidamente",
+            "Disfruté mucho la película que vi anoche",
+            "La inteligencia artificial está revolucionando el mundo"
         ],
-        'label': [  # Changed from 'etiqueta' to 'label'
+        'label': [
             "tecnología",
             "deportes",
             "tecnología",
             "estilo de vida",
-            "finanzas"
+            "finanzas",
+            "tecnología",
+            "estilo de vida",
+            "finanzas",
+            "entretenimiento",
+            "tecnología"
         ]
     }
     df = pd.DataFrame(datos)
