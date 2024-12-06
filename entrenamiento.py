@@ -38,7 +38,7 @@ def preprocess_text(texto):
     # Eliminar puntuación
     texto = texto.translate(str.maketrans('', '', string.punctuation))
     # Eliminar stopwords
-    texto = ' '.join([palabra para palabra en texto.split() si palabra no en stop_words])
+    texto = ' '.join([palabra for palabra in texto.split() if palabra not in stop_words])
     return texto
 
 datos['tweet'] = datos['tweet'].apply(preprocess_text)
