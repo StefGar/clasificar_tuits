@@ -33,7 +33,17 @@ def crear_csv():
             "El senderismo en las montañas fue refrescante",
             "La economía está en recesión",
             "Vi una serie de televisión muy entretenida",
-            "La robótica está transformando la industria"
+            "La robótica está transformando la industria",
+            "El cambio climático es una amenaza global",
+            "La inteligencia artificial está mejorando la medicina",
+            "El nuevo álbum de música es increíble",
+            "La economía está en recuperación",
+            "El deporte es esencial para la salud",
+            "La programación en Python es muy popular",
+            "La educación a distancia es el futuro",
+            "La moda sostenible está en auge",
+            "La tecnología blockchain está revolucionando las finanzas",
+            "El arte digital está ganando popularidad"
         ],
         'label': [
             "tecnología",
@@ -65,7 +75,17 @@ def crear_csv():
             "estilo de vida",
             "finanzas",
             "entretenimiento",
-            "tecnología"
+            "tecnología",
+            "medio ambiente",
+            "tecnología",
+            "entretenimiento",
+            "finanzas",
+            "salud",
+            "tecnología",
+            "educación",
+            "moda",
+            "tecnología",
+            "arte"
         ]
     }
     df = pd.DataFrame(datos)
