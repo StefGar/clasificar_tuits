@@ -23,7 +23,17 @@ def crear_csv():
             "La salud mental es muy importante",
             "El arte moderno es muy interesante",
             "La educación en línea está ganando popularidad",
-            "La moda de este año es muy colorida"
+            "La moda de este año es muy colorida",
+            "La tecnología 5G está avanzando rápidamente",
+            "El equipo de baloncesto ganó el campeonato",
+            "La programación en JavaScript es muy versátil",
+            "Pasé un día increíble en la playa",
+            "Las acciones de Tesla están subiendo",
+            "Aprendí sobre redes neuronales hoy",
+            "El senderismo en las montañas fue refrescante",
+            "La economía está en recesión",
+            "Vi una serie de televisión muy entretenida",
+            "La robótica está transformando la industria"
         ],
         'label': [
             "tecnología",
@@ -45,7 +55,17 @@ def crear_csv():
             "salud",
             "arte",
             "educación",
-            "moda"
+            "moda",
+            "tecnología",
+            "deportes",
+            "tecnología",
+            "estilo de vida",
+            "finanzas",
+            "tecnología",
+            "estilo de vida",
+            "finanzas",
+            "entretenimiento",
+            "tecnología"
         ]
     }
     df = pd.DataFrame(datos)
