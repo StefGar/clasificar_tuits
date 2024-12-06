@@ -122,6 +122,9 @@ def main():
     
     # Mostrar todos los resultados
     pd.set_option('display.max_rows', None)
+    pd.set_option('display.max_columns', None)
+    pd.set_option('display.width', None)
+    pd.set_option('display.max_colwidth', None)
     print(datos[['tweet', 'label', 'predicted_label']])
     print("End of the main function")
 
