@@ -11,6 +11,11 @@ import string
 # Descargar stopwords
 nltk.download('stopwords')
 
+# Ensure the CSV file exists
+if not os.path.exists('tweets.csv'):
+    from main import create_csv
+    create_csv()
+
 # Cargar datos
 data = pd.read_csv('tweets.csv')  # Asegúrate de tener un archivo tweets.csv con columnas 'tweet' y 'label'
 
