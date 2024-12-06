@@ -61,11 +61,16 @@ model.fit(X_train_vec, y_train)
 # Predicción y evaluación
 y_pred = model.predict(X_test_vec)
 accuracy = accuracy_score(y_test, y_pred)
-print(f'Accuracy: {accuracy:.2f}')  # Display accuracy with two decimals
+
+# Mostrar el informe de clasificación
+print("Classification Report:")
+print(classification_report(y_test, y_pred))
 
 # Verificar predicciones
-print("Predictions:", y_pred[:1])  # Display the first prediction
-print("Actual labels:", y_test.values[:1])  # Display the first actual label
+print("Predictions:", y_pred[:5])  # Display the first five predictions
+print("Actual labels:", y_test.values[:5])  # Display the first five actual labels
+
+print(f'Accuracy: {accuracy:.2f}')  # Display accuracy with two decimals
 
 print("End of the training script")
 

@@ -1,6 +1,12 @@
 import os
 import pandas as pd
 
+# Set display options
+pd.set_option('display.max_rows', None)
+pd.set_option('display.max_columns', None)
+pd.set_option('display.width', None)
+pd.set_option('display.max_colwidth', None)
+
 def crear_csv():
     datos = {
         'tweet': [
@@ -134,10 +140,6 @@ def main():
     datos['predicted_label'] = datos['tweet'].apply(lambda tweet: classify_tweet(tweet))
     
     # Mostrar todos los resultados en formato tabular
-    pd.set_option('display.max_rows', None)
-    pd.set_option('display.max_columns', None)
-    pd.set_option('display.width', None)
-    pd.set_option('display.max_colwidth', None)
     print(datos[['tweet', 'label', 'predicted_label']].to_string(index=False))
     
     # Mostrar la precisión del modelo
