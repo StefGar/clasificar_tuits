@@ -109,6 +109,13 @@ def display_all_tweets(datos):
     for tweet in tweets_list:
         print(tweet)
 
+def display_all_tweets_from_csv():
+    if os.path.exists('tweets.csv'):
+        datos = pd.read_csv('tweets.csv')
+        print(datos[['tweet', 'label']].to_string(index=False))
+    else:
+        print("The 'tweets.csv' file does not exist.")
+
 def main():
     print("Start of the main function")
     # Cargar datos
@@ -131,6 +138,9 @@ def main():
     pd.set_option('display.width', None)
     pd.set_option('display.max_colwidth', None)
     print(datos[['tweet', 'label', 'predicted_label']].head().to_string(index=False))
+    
+    # Display all tweets from CSV
+    display_all_tweets_from_csv()
     
     print("End of the main function")
 
