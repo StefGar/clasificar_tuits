@@ -16,6 +16,10 @@ if not os.path.exists('tweets.csv'):
     from main import create_csv
     create_csv()
 
+# Check again if the file was created successfully
+if not os.path.exists('tweets.csv'):
+    raise FileNotFoundError("The file 'tweets.csv' does not exist and could not be created.")
+
 # Cargar datos
 data = pd.read_csv('tweets.csv')  # Asegúrate de tener un archivo tweets.csv con columnas 'tweet' y 'label'
 
