@@ -1,1 +1,0 @@
-# Este archivo ya no es necesario ya que la creación del CSV se maneja en main.py
