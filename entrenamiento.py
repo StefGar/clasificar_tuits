@@ -13,31 +13,31 @@ nltk.download('stopwords')
 
 # Asegurarse de que el archivo CSV exista
 if not os.path.exists('tweets.csv'):
-    from main import create_csv
-    create_csv()
+    from main import crear_csv
+    crear_csv()
 
 # Verificar nuevamente si el archivo fue creado exitosamente
 if not os.path.exists('tweets.csv'):
     raise FileNotFoundError("El archivo 'tweets.csv' no existe y no pudo ser creado.")
 
 # Cargar datos
-data = pd.read_csv('tweets.csv')  # Asegúrate de tener un archivo tweets.csv con columnas 'tweet' y 'label'
+datos = pd.read_csv('tweets.csv')  # Asegúrate de tener un archivo tweets.csv con columnas 'tweet' y 'etiqueta'
 
 # Preprocesamiento de texto
-def preprocess_text(text):
+def preprocess_text(texto):
     # Convertir a minúsculas
-    text = text.lower()
+    texto = texto.lower()
     # Eliminar puntuación
-    text = text.translate(str.maketrans('', '', string.punctuation))
+    texto = texto.translate(str.maketrans('', '', string.punctuation))
     # Eliminar stopwords
-    stop_words = set(stopwords.words('english'))
-    text = ' '.join([word for word in text.split() if word not in stop_words])
-    return text
+    stop_words = set(stopwords.words('spanish'))
+    texto = ' '.join([palabra for palabra in texto.split() if palabra not in stop_words])
+    return texto
 
-data['tweet'] = data['tweet'].apply(preprocess_text)
+datos['tweet'] = datos['tweet'].apply(preprocess_text)
 
 # Dividir datos en entrenamiento y prueba
-X_train, X_test, y_train, y_test = train_test_split(data['tweet'], data['label'], test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(datos['tweet'], datos['etiqueta'], test_size=0.2, random_state=42)
 
 # Vectorización
 vectorizer = TfidfVectorizer()
@@ -61,5 +61,5 @@ def classify_tweet(tweet):
     return prediction[0]
 
 # Ejemplo de uso
-new_tweet = "This is an example tweet about machine learning."
-print(f'Tema: {classify_tweet(new_tweet)}')
+nuevo_tweet = "Este es un tweet de ejemplo sobre aprendizaje automático."
+print(f'Tema: {classify_tweet(nuevo_tweet)}')

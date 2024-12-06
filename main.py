@@ -1,44 +1,44 @@
 import os
 import pandas as pd
 
-def create_csv():
-    data = {
+def crear_csv():
+    datos = {
         'tweet': [
-            "I love machine learning and AI",
-            "Just watched a great football match",
-            "Python is an amazing programming language",
-            "Had a wonderful dinner with family",
-            "Bitcoin prices are soaring"
+            "Me encanta el aprendizaje automático y la IA",
+            "Acabo de ver un gran partido de fútbol",
+            "Python es un lenguaje de programación increíble",
+            "Tuve una cena maravillosa con la familia",
+            "Los precios de Bitcoin están subiendo"
         ],
-        'label': [
-            "technology",
-            "sports",
-            "technology",
-            "lifestyle",
-            "finance"
+        'etiqueta': [
+            "tecnología",
+            "deportes",
+            "tecnología",
+            "estilo de vida",
+            "finanzas"
         ]
     }
-    df = pd.DataFrame(data)
+    df = pd.DataFrame(datos)
     df.to_csv('tweets.csv', index=False)
 
 if not os.path.exists('tweets.csv'):
-    create_csv()
+    crear_csv()
 
 from entrenamiento import preprocess_text, vectorizer, model, classify_tweet
 
 def main():
     # Cargar datos
-    data = pd.read_csv('tweets.csv')
+    datos = pd.read_csv('tweets.csv')
     
     # Preprocesar y vectorizar datos
-    data['tweet'] = data['tweet'].apply(preprocess_text)
-    X = vectorizer.transform(data['tweet'])
+    datos['tweet'] = datos['tweet'].apply(preprocess_text)
+    X = vectorizer.transform(datos['tweet'])
     
     # Clasificar tweets
-    data['predicted_label'] = data['tweet'].apply(classify_tweet)
+    datos['etiqueta_predicha'] = datos['tweet'].apply(classify_tweet)
     
     # Mostrar resultados
-    print(data[['tweet', 'label', 'predicted_label']])
+    print(datos[['tweet', 'etiqueta', 'etiqueta_predicha']])
 
 if __name__ == "__main__":
     main()
