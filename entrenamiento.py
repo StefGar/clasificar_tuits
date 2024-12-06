@@ -7,6 +7,7 @@ from sklearn.metrics import accuracy_score
 import nltk
 from nltk.corpus import stopwords
 import string
+from sklearn.metrics import classification_report
 
 print("Start of the training script")
 
@@ -61,6 +62,10 @@ model.fit(X_train_vec, y_train)
 y_pred = model.predict(X_test_vec)
 accuracy = accuracy_score(y_test, y_pred)
 print(f'Accuracy: {accuracy:.2f}')  # Display accuracy with two decimals
+
+# Mostrar reporte de clasificación
+print("Classification Report:")
+print(classification_report(y_test, y_pred))
 
 # Verificar predicciones
 print("Predictions:", y_pred[:10])  # Display the first 10 predictions

@@ -104,6 +104,11 @@ if not os.path.exists('tweets.csv'):
 
 from entrenamiento import preprocess_text, vectorizer, model, classify_tweet
 
+def display_all_tweets(datos):
+    tweets_list = datos['tweet'].tolist()
+    for tweet in tweets_list:
+        print(tweet)
+
 def main():
     print("Start of the main function")
     # Cargar datos
@@ -126,6 +131,14 @@ def main():
     pd.set_option('display.width', None)
     pd.set_option('display.max_colwidth', None)
     print(datos[['tweet', 'label', 'predicted_label']])
+    
+    # Display all tweets and their labels
+    for index, row in datos.iterrows():
+        print(f"Tweet: {row['tweet']}, Label: {row['label']}, Predicted: {row['predicted_label']}")
+    
+    # Display all tweets in a list format
+    display_all_tweets(datos)
+    
     print("End of the main function")
 
 if __name__ == "__main__":
