@@ -31,6 +31,7 @@ def main():
     datos = pd.read_csv('tweets.csv')
     
     # Verificar si la columna 'etiqueta' existe
+    print(datos.columns)  # Debugging line to print the columns of the CSV file
     if 'etiqueta' not in datos.columns:
         raise KeyError("La columna 'etiqueta' no existe en el archivo 'tweets.csv'.")
     

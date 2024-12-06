@@ -24,6 +24,7 @@ if not os.path.exists('tweets.csv'):
 datos = pd.read_csv('tweets.csv')  # Asegúrate de tener un archivo tweets.csv con columnas 'tweet' y 'etiqueta'
 
 # Asegurarse de que el archivo CSV tenga las columnas correctas
+print(datos.columns)  # Debugging line to print the columns of the CSV file
 if 'etiqueta' not in datos.columns:
     raise KeyError("La columna 'etiqueta' no existe en el archivo 'tweets.csv'.")
 
@@ -55,7 +56,7 @@ model.fit(X_train_vec, y_train)
 # Predicción y evaluación
 y_pred = model.predict(X_test_vec)
 accuracy = accuracy_score(y_test, y_pred)
-print(f'Precisión: {accuracy}')
+print(f'Precisi��n: {accuracy}')
 
 # Función para clasificar un nuevo tweet
 def classify_tweet(tweet):
