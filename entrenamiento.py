@@ -69,6 +69,10 @@ print("Actual labels:", y_test.values[:1])  # Display the first actual label
 
 print("End of the training script")
 
+# Función para obtener la precisión del modelo
+def get_model_accuracy():
+    return accuracy
+
 # Función para clasificar un nuevo tweet
 def classify_tweet(tweet):
     tweet = preprocess_text(tweet)

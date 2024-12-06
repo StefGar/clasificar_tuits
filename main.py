@@ -102,7 +102,7 @@ def actualizar_csv(nuevos_datos):
 if not os.path.exists('tweets.csv'):
     crear_csv()
 
-from entrenamiento import preprocess_text, vectorizer, model, classify_tweet
+from entrenamiento import preprocess_text, vectorizer, model, classify_tweet, get_model_accuracy
 
 def display_all_tweets(datos):
     tweets_list = datos['tweet'].tolist()
@@ -139,6 +139,10 @@ def main():
     pd.set_option('display.width', None)
     pd.set_option('display.max_colwidth', None)
     print(datos[['tweet', 'label', 'predicted_label']].to_string(index=False))
+    
+    # Mostrar la precisión del modelo
+    accuracy = get_model_accuracy()
+    print(f'Model Accuracy: {accuracy:.2f}')
     
     print("End of the main function")
 
