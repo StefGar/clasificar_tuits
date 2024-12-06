@@ -1,6 +1,5 @@
 import os
 import pandas as pd
-from entrenamiento import preprocess_text, vectorizer, model, classify_tweet
 
 def create_csv():
     data = {
@@ -22,10 +21,12 @@ def create_csv():
     df = pd.DataFrame(data)
     df.to_csv('tweets.csv', index=False)
 
+if not os.path.exists('tweets.csv'):
+    create_csv()
+
+from entrenamiento import preprocess_text, vectorizer, model, classify_tweet
+
 def main():
-    if not os.path.exists('tweets.csv'):
-        create_csv()
-    
     # Cargar datos
     data = pd.read_csv('tweets.csv')
     
