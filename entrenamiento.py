@@ -63,9 +63,6 @@ y_pred = model.predict(X_test_vec)
 accuracy = accuracy_score(y_test, y_pred)
 
 # Verificar predicciones
-print("Predictions:", y_pred[:5])  # Display the first five predictions
-print("Actual labels:", y_test.values[:5])  # Display the first five actual labels
-
 print(f'Accuracy: {accuracy:.2f}')  # Display accuracy with two decimals
 
 print("End of the training script")
