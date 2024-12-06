@@ -153,6 +153,14 @@ def crear_csv():
     df = pd.DataFrame(datos)
     df.to_csv('tweets.csv', index=False)
 
+def actualizar_csv(nuevos_datos):
+    if os.path.exists('tweets.csv'):
+        df = pd.read_csv('tweets.csv')
+        df = pd.concat([df, pd.DataFrame(nuevos_datos)], ignore_index=True)
+        df.to_csv('tweets.csv', index=False)
+    else:
+        crear_csv()
+
 if not os.path.exists('tweets.csv'):
     crear_csv()
 
