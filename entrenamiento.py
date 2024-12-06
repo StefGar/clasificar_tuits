@@ -62,10 +62,6 @@ model.fit(X_train_vec, y_train)
 y_pred = model.predict(X_test_vec)
 accuracy = accuracy_score(y_test, y_pred)
 
-# Mostrar el informe de clasificación
-print("Classification Report:")
-print(classification_report(y_test, y_pred, zero_division=0))
-
 # Verificar predicciones
 print("Predictions:", y_pred[:5])  # Display the first five predictions
 print("Actual labels:", y_test.values[:5])  # Display the first five actual labels
