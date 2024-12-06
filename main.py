@@ -118,7 +118,7 @@ def main():
     X = vectorizer.transform(datos['tweet'])
     
     # Clasificar tweets
-    datos['predicted_label'] = datos['tweet'].apply(classify_tweet)
+    datos['predicted_label'] = datos['tweet'].apply(lambda tweet: classify_tweet(tweet))
     
     # Mostrar todos los resultados
     pd.set_option('display.max_rows', None)
