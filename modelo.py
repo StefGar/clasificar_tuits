@@ -1,4 +1,4 @@
-from main import preprocess_text, vectorizer, model
+from entrenamiento import preprocess_text, vectorizer, model
 
 def classify_tweet(tweet):
     tweet = preprocess_text(tweet)
