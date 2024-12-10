@@ -146,8 +146,11 @@ def clear_console():
 def analizar_mas_tweets(nuevos_tweets, labels):
     if os.path.exists('tweets.csv'):
         datos = pd.read_csv('tweets.csv')
+        datos['tweet'] = datos['tweet'].apply(preprocess_text)
+        X = vectorizer.transform(datos['tweet'])
+        datos['predicted_label'] = model.predict(X)
     else:
-        datos = pd.DataFrame(columns=['tweet', 'label'])
+        datos = pd.DataFrame(columns=['tweet', 'label', 'predicted_label'])
     
     nuevos_datos = pd.DataFrame({'tweet': nuevos_tweets, 'label': labels})
     nuevos_datos['tweet'] = nuevos_datos['tweet'].apply(preprocess_text)
