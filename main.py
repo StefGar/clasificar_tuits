@@ -185,7 +185,7 @@ def main():
     print(f'Accuracy: {accuracy:.2f}')
     
     # Mostrar el reporte de clasificación
-    display_classification_report(datos)
+    print(classification_report(datos['label'], datos['predicted_label'], zero_division=0))
     
     # Analizar más tweets
     nuevos_tweets = [
