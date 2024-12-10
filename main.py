@@ -143,7 +143,6 @@ def main():
     
     # Cargar datos
     datos = pd.read_csv('tweets.csv')
-    print("CSV file loaded successfully.")
     
     # Verificar si la columna 'label' existe
     if 'label' not in datos.columns:
@@ -167,7 +166,6 @@ def main():
     display_classification_report(datos)
     
     # Mostrar más tweets con etiquetas y etiquetas predichas
-    print("\nMostrando más tweets con etiquetas y etiquetas predichas:")
     display_all_tweets_with_labels(datos)
 
 if __name__ == "__main__":
