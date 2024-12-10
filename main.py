@@ -132,7 +132,11 @@ def display_classification_report(datos):
 def display_all_tweets_with_labels(datos):
     print(datos[['tweet', 'label', 'predicted_label']].to_string(index=False))
 
+def clear_console():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 def main():
+    clear_console()
     # Crear CSV si no existe
     if not os.path.exists('tweets.csv'):
         crear_csv()
