@@ -167,14 +167,8 @@ def main():
     accuracy = accuracy_score(datos['label'], datos['predicted_label'])
     print(f'Accuracy: {accuracy:.2f}')
     
-    # Mostrar todos los resultados en formato tabular
-    print(datos[['tweet', 'label', 'predicted_label']].to_string(index=False))
-    
     # Mostrar el reporte de clasificación
     display_classification_report(datos)
-    
-    # Mostrar más tweets con etiquetas y etiquetas predichas
-    display_all_tweets_with_labels(datos)
     
     # Mostrar tweets mal clasificados
     display_misclassified_tweets(datos)
