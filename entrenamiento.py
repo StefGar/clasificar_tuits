@@ -45,6 +45,10 @@ def preprocess_text(texto):
 
 datos['tweet'] = datos['tweet'].apply(preprocess_text)
 
+# Verificar el equilibrio de los datos
+print("Distribución de etiquetas en el conjunto de datos:")
+print(datos['label'].value_counts())
+
 # Balancear el dataset
 min_count = datos['label'].value_counts().min()
 balanced_data = datos.groupby('label').apply(lambda x: x.sample(min_count)).reset_index(drop=True)
