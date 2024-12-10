@@ -109,6 +109,7 @@ if not os.path.exists('tweets.csv'):
     crear_csv()
 
 from entrenamiento import preprocess_text, vectorizer, model, classify_tweet, get_model_accuracy
+from sklearn.metrics import classification_report, accuracy_score
 
 def display_all_tweets(datos):
     tweets_list = datos['tweet'].tolist()
@@ -122,6 +123,9 @@ def display_all_tweets_from_csv():
         print(datos[['tweet', 'label']].to_string(index=False))
     else:
         print("The 'tweets.csv' file does not exist.")
+
+def display_classification_report(datos):
+    print(classification_report(datos['label'], datos['predicted_label']))
 
 def main():
     # Crear CSV si no existe
@@ -142,11 +146,15 @@ def main():
     # Clasificar tweets
     datos['predicted_label'] = model.predict(X)
     
+    # Calcular y mostrar la precisión
+    accuracy = accuracy_score(datos['label'], datos['predicted_label'])
+    print(f'Accuracy: {accuracy:.2f}')
+    
     # Mostrar todos los resultados en formato tabular
     print(datos[['tweet', 'label', 'predicted_label']].to_string(index=False))
     
-    # Mostrar todos los tweets desde el CSV
-    display_all_tweets_from_csv()
+    # Mostrar el reporte de clasificación
+    display_classification_report(datos)
 
 if __name__ == "__main__":
     main()
