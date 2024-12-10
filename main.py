@@ -127,6 +127,9 @@ def display_all_tweets_from_csv():
 def display_classification_report(datos):
     print(classification_report(datos['label'], datos['predicted_label']))
 
+def display_all_tweets_with_labels(datos):
+    print(datos[['tweet', 'label', 'predicted_label']].to_string(index=False))
+
 def main():
     # Crear CSV si no existe
     if not os.path.exists('tweets.csv'):
@@ -151,7 +154,7 @@ def main():
     print(f'Accuracy: {accuracy:.2f}')
     
     # Mostrar todos los resultados en formato tabular
-    print(datos[['tweet', 'label', 'predicted_label']].to_string(index=False))
+    display_all_tweets_with_labels(datos)
     
     # Mostrar el reporte de clasificación
     display_classification_report(datos)

@@ -68,7 +68,7 @@ accuracy = get_model_accuracy(y_test, y_pred)
 print(f'Accuracy: {accuracy:.2f}')  # Display accuracy with two decimals
 
 # Mostrar el reporte de clasificación
-print(classification_report(y_test, y_pred))
+print(classification_report(y_test, y_pred, zero_division=0))
 
 # Función para clasificar un nuevo tweet
 def classify_tweet(tweet):
