@@ -154,7 +154,7 @@ def main():
     print(f'Accuracy: {accuracy:.2f}')
     
     # Mostrar todos los resultados en formato tabular
-    display_all_tweets_with_labels(datos)
+    print(datos[['tweet', 'label', 'predicted_label']].to_string(index=False))
     
     # Mostrar el reporte de clasificación
     display_classification_report(datos)
