@@ -96,12 +96,14 @@ def crear_csv():
     }
     df = pd.DataFrame(datos)
     df.to_csv('tweets.csv', index=False)
+    print("CSV file created successfully.")
 
 def actualizar_csv(nuevos_datos):
     if os.path.exists('tweets.csv'):
         df = pd.read_csv('tweets.csv')
         df = pd.concat([df, pd.DataFrame(nuevos_datos)], ignore_index=True)
         df.to_csv('tweets.csv', index=False)
+        print("CSV file updated successfully.")
     else:
         crear_csv()
 
@@ -137,6 +139,7 @@ def main():
     
     # Cargar datos
     datos = pd.read_csv('tweets.csv')
+    print("CSV file loaded successfully.")
     
     # Verificar si la columna 'label' existe
     if 'label' not in datos.columns:

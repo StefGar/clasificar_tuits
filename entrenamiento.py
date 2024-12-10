@@ -27,6 +27,7 @@ if not os.path.exists('tweets.csv'):
 
 # Cargar datos
 datos = pd.read_csv('tweets.csv')  # Asegúrate de tener un archivo tweets.csv con columnas 'tweet' y 'label'
+print("CSV file loaded successfully.")
 
 # Asegurarse de que el archivo CSV tenga las columnas correctas
 if 'label' not in datos.columns:
