@@ -145,9 +145,8 @@ def main():
     # Mostrar todos los resultados en formato tabular
     print(datos[['tweet', 'label', 'predicted_label']].to_string(index=False))
     
-    # Mostrar la precisión del modelo
-    accuracy = get_model_accuracy(datos['label'], datos['predicted_label'])
-    print(f'Model Accuracy: {accuracy:.2f}')
+    # Mostrar todos los tweets desde el CSV
+    display_all_tweets_from_csv()
 
 if __name__ == "__main__":
     main()
