@@ -51,7 +51,7 @@ print("Distribución de etiquetas en el conjunto de datos:")
 print(datos['label'].value_counts())
 
 # Balancear el dataset
-min_count = datos['label'].value_counts().min()
+min_count = 2  # Ensure each class has at least 2 samples
 balanced_data = datos.groupby('label').apply(lambda x: x.sample(min_count, replace=True)).reset_index(drop=True)
 
 # Dividir datos en entrenamiento y prueba con estratificación
