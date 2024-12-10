@@ -146,7 +146,7 @@ def main():
     print(datos[['tweet', 'label', 'predicted_label']].to_string(index=False))
     
     # Mostrar la precisión del modelo
-    accuracy = get_model_accuracy()
+    accuracy = get_model_accuracy(datos['label'], datos['predicted_label'])
     print(f'Model Accuracy: {accuracy:.2f}')
 
 if __name__ == "__main__":
