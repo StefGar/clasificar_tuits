@@ -165,6 +165,10 @@ def main():
     
     # Mostrar el reporte de clasificación
     display_classification_report(datos)
+    
+    # Mostrar más tweets
+    print("\nMostrando más tweets:")
+    display_all_tweets(datos)
 
 if __name__ == "__main__":
     main()
