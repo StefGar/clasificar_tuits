@@ -55,7 +55,8 @@ min_count = 2  # Ensure each class has at least 2 samples
 balanced_data = datos.groupby('label').apply(lambda x: x.sample(min_count, replace=True)).reset_index(drop=True)
 
 # Dividir datos en entrenamiento y prueba con estratificación
-X_train, X_test, y_train, y_test = train_test_split(balanced_data['tweet'], balanced_data['label'], test_size=0.2, random_state=42, stratify=balanced_data['label'])
+test_size = max(0.2, 4 / len(balanced_data))  # Ensure test_size is appropriate for the number of classes
+X_train, X_test, y_train, y_test = train_test_split(balanced_data['tweet'], balanced_data['label'], test_size=test_size, random_state=42, stratify=balanced_data['label'])
 
 # Vectorización
 vectorizer = TfidfVectorizer()
