@@ -180,30 +180,6 @@ def main():
     # Clasificar tweets
     datos['predicted_label'] = model.predict(X)
     
-    # Analizar más tweets
-    nuevos_tweets = [
-        "Learning about AI is fascinating",
-        "The stock market is unpredictable",
-        "I enjoyed the new Marvel movie",
-        "Healthy eating is important",
-        "Traveling to new places is exciting"
-    ]
-    labels = [
-        "technology",
-        "finance",
-        "entertainment",
-        "health",
-        "travel"
-    ]
-    
-    # Unificar y mostrar todos los tweets con etiquetas y etiquetas predichas
-    nuevos_datos = pd.DataFrame({'tweet': nuevos_tweets, 'label': labels})
-    nuevos_datos['tweet'] = nuevos_datos['tweet'].apply(preprocess_text)
-    X_nuevos = vectorizer.transform(nuevos_datos['tweet'])
-    nuevos_datos['predicted_label'] = model.predict(X_nuevos)
-    
-    datos = pd.concat([datos, nuevos_datos], ignore_index=True)
-    
     # Calcular y mostrar la precisión para los datos combinados
     accuracy_combined = accuracy_score(datos['label'], datos['predicted_label'])
     print(f'Combined Accuracy: {accuracy_combined:.2f}')
