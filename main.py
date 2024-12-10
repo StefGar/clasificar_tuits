@@ -144,11 +144,18 @@ def clear_console():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def analizar_mas_tweets(nuevos_tweets, labels):
+    if os.path.exists('tweets.csv'):
+        datos = pd.read_csv('tweets.csv')
+    else:
+        datos = pd.DataFrame(columns=['tweet', 'label'])
+    
     nuevos_datos = pd.DataFrame({'tweet': nuevos_tweets, 'label': labels})
     nuevos_datos['tweet'] = nuevos_datos['tweet'].apply(preprocess_text)
     X_nuevos = vectorizer.transform(nuevos_datos['tweet'])
     nuevos_datos['predicted_label'] = model.predict(X_nuevos)
-    print(nuevos_datos[['tweet', 'label', 'predicted_label']].to_string(index=False))
+    
+    datos = pd.concat([datos, nuevos_datos], ignore_index=True)
+    print(datos[['tweet', 'label', 'predicted_label']].to_string(index=False))
 
 def main():
     clear_console()
