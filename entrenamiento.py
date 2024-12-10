@@ -63,11 +63,11 @@ y_pred = model.predict(X_test_vec)
 
 # Función para obtener la precisión del modelo
 def get_model_accuracy():
-    accuracy = accuracy_score(y_test, y_pred)
-    return accuracy
+    return accuracy_score(y_test, y_pred)
 
 # Verificar predicciones
-print(f'Accuracy: {get_model_accuracy():.2f}')  # Display accuracy with two decimals
+accuracy = get_model_accuracy()
+print(f'Accuracy: {accuracy:.2f}')  # Display accuracy with two decimals
 
 print("End of the training script")
 
