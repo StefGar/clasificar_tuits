@@ -44,8 +44,12 @@ def preprocess_text(texto):
 
 datos['tweet'] = datos['tweet'].apply(preprocess_text)
 
+# Balancear el dataset
+min_count = datos['label'].value_counts().min()
+balanced_data = datos.groupby('label').apply(lambda x: x.sample(min_count)).reset_index(drop=True)
+
 # Dividir datos en entrenamiento y prueba
-X_train, X_test, y_train, y_test = train_test_split(datos['tweet'], datos['label'], test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(balanced_data['tweet'], balanced_data['label'], test_size=0.2, random_state=42)
 
 # Vectorización
 vectorizer = TfidfVectorizer()
