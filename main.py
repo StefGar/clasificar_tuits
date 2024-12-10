@@ -170,8 +170,8 @@ def main():
     # Mostrar el reporte de clasificación
     display_classification_report(datos)
     
-    # Mostrar tweets mal clasificados
-    display_misclassified_tweets(datos)
+    # Mostrar todos los tweets con etiquetas y etiquetas predichas
+    display_all_tweets_with_labels(datos)
 
 if __name__ == "__main__":
     main()
