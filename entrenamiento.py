@@ -89,3 +89,10 @@ def classify_tweet(tweet):
 # Ejemplo de uso
 nuevo_tweet = "Este es un tweet de ejemplo sobre aprendizaje automático."
 print(f'Tema: {classify_tweet(nuevo_tweet)}')
+
+def analizar_mas_tweets(nuevos_tweets, labels):
+    nuevos_datos = pd.DataFrame({'tweet': nuevos_tweets, 'label': labels})
+    nuevos_datos['tweet'] = nuevos_datos['tweet'].apply(preprocess_text)
+    X_nuevos = vectorizer.transform(nuevos_datos['tweet'])
+    nuevos_datos['predicted_label'] = model.predict(X_nuevos)
+    print(nuevos_datos[['tweet', 'label', 'predicted_label']].to_string(index=False))

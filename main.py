@@ -143,12 +143,12 @@ def display_misclassified_tweets(datos):
 def clear_console():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-def analizar_mas_tweets(nuevos_tweets):
-    nuevos_datos = pd.DataFrame({'tweet': nuevos_tweets})
+def analizar_mas_tweets(nuevos_tweets, labels):
+    nuevos_datos = pd.DataFrame({'tweet': nuevos_tweets, 'label': labels})
     nuevos_datos['tweet'] = nuevos_datos['tweet'].apply(preprocess_text)
     X_nuevos = vectorizer.transform(nuevos_datos['tweet'])
     nuevos_datos['predicted_label'] = model.predict(X_nuevos)
-    print(nuevos_datos[['tweet', 'predicted_label']].to_string(index=False))
+    print(nuevos_datos[['tweet', 'label', 'predicted_label']].to_string(index=False))
 
 def main():
     clear_console()
@@ -188,7 +188,14 @@ def main():
         "Healthy eating is important",
         "Traveling to new places is exciting"
     ]
-    analizar_mas_tweets(nuevos_tweets)
+    labels = [
+        "technology",
+        "finance",
+        "entertainment",
+        "health",
+        "travel"
+    ]
+    analizar_mas_tweets(nuevos_tweets, labels)
 
 if __name__ == "__main__":
     main()
