@@ -180,13 +180,6 @@ def main():
     # Clasificar tweets
     datos['predicted_label'] = model.predict(X)
     
-    # Calcular y mostrar la precisión
-    accuracy = accuracy_score(datos['label'], datos['predicted_label'])
-    print(f'Accuracy: {accuracy:.2f}')
-    
-    # Mostrar el reporte de clasificación
-    print(classification_report(datos['label'], datos['predicted_label'], zero_division=0))
-    
     # Analizar más tweets
     nuevos_tweets = [
         "Learning about AI is fascinating",
