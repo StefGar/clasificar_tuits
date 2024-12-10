@@ -202,23 +202,23 @@ def main():
         "health",
         "travel"
     ]
-    analizar_mas_tweets(nuevos_tweets, labels)
     
     # Unificar y mostrar todos los tweets con etiquetas y etiquetas predichas
-    if os.path.exists('tweets.csv'):
-        datos = pd.read_csv('tweets.csv')
-        datos['tweet'] = datos['tweet'].apply(preprocess_text)
-        X = vectorizer.transform(datos['tweet'])
-        datos['predicted_label'] = model.predict(X)
-    else:
-        datos = pd.DataFrame(columns=['tweet', 'label', 'predicted_label'])
-    
     nuevos_datos = pd.DataFrame({'tweet': nuevos_tweets, 'label': labels})
     nuevos_datos['tweet'] = nuevos_datos['tweet'].apply(preprocess_text)
     X_nuevos = vectorizer.transform(nuevos_datos['tweet'])
     nuevos_datos['predicted_label'] = model.predict(X_nuevos)
     
     datos = pd.concat([datos, nuevos_datos], ignore_index=True)
+    
+    # Calcular y mostrar la precisión para los datos combinados
+    accuracy_combined = accuracy_score(datos['label'], datos['predicted_label'])
+    print(f'Combined Accuracy: {accuracy_combined:.2f}')
+    
+    # Mostrar el reporte de clasificación para los datos combinados
+    print(classification_report(datos['label'], datos['predicted_label'], zero_division=0))
+    
+    # Mostrar todos los tweets con etiquetas y etiquetas predichas
     print(datos[['tweet', 'label', 'predicted_label']].to_string(index=False))
 
 if __name__ == "__main__":
