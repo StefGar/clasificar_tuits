@@ -143,6 +143,13 @@ def display_misclassified_tweets(datos):
 def clear_console():
     os.system('cls' if os.name == 'nt' else 'clear')
 
+def analizar_mas_tweets(nuevos_tweets):
+    nuevos_datos = {'tweet': nuevos_tweets}
+    nuevos_datos['tweet'] = pd.Series(nuevos_datos['tweet']).apply(preprocess_text)
+    X_nuevos = vectorizer.transform(nuevos_datos['tweet'])
+    nuevos_datos['predicted_label'] = model.predict(X_nuevos)
+    print(nuevos_datos[['tweet', 'predicted_label']].to_string(index=False))
+
 def main():
     clear_console()
     # Crear CSV si no existe
@@ -172,6 +179,16 @@ def main():
     
     # Mostrar todos los tweets con etiquetas y etiquetas predichas
     display_all_tweets_with_labels(datos)
+    
+    # Analizar más tweets
+    nuevos_tweets = [
+        "Learning about AI is fascinating",
+        "The stock market is unpredictable",
+        "I enjoyed the new Marvel movie",
+        "Healthy eating is important",
+        "Traveling to new places is exciting"
+    ]
+    analizar_mas_tweets(nuevos_tweets)
 
 if __name__ == "__main__":
     main()
