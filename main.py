@@ -136,7 +136,7 @@ def main():
     X = vectorizer.transform(datos['tweet'])
     
     # Clasificar tweets
-    datos['predicted_label'] = datos['tweet'].apply(lambda tweet: classify_tweet(tweet))
+    datos['predicted_label'] = model.predict(X)
     
     # Mostrar todos los resultados en formato tabular
     print(datos[['tweet', 'label', 'predicted_label']].to_string(index=False))
@@ -144,10 +144,6 @@ def main():
     # Mostrar la precisión del modelo
     accuracy = get_model_accuracy()
     print(f'Model Accuracy: {accuracy:.2f}')
-    
-    # Desplegar todos los tweets
-    display_all_tweets(datos)
 
 if __name__ == "__main__":
     main()
-    display_all_tweets_from_csv()
