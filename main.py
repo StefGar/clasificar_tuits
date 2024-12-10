@@ -124,6 +124,10 @@ def display_all_tweets_from_csv():
         print("The 'tweets.csv' file does not exist.")
 
 def main():
+    # Crear CSV si no existe
+    if not os.path.exists('tweets.csv'):
+        crear_csv()
+    
     # Cargar datos
     datos = pd.read_csv('tweets.csv')
     
@@ -145,9 +149,5 @@ def main():
     accuracy = get_model_accuracy()
     print(f'Model Accuracy: {accuracy:.2f}')
 
-    # Desplegar todos los tweets
-    display_all_tweets(datos)
-
 if __name__ == "__main__":
     main()
-    display_all_tweets_from_csv()
