@@ -9,8 +9,6 @@ from nltk.corpus import stopwords
 import string
 from sklearn.metrics import classification_report
 
-print("Start of the training script")
-
 # Descargar stopwords si no están disponibles
 try:
     stop_words = set(stopwords.words('spanish'))
@@ -71,8 +69,6 @@ print(f'Accuracy: {accuracy:.2f}')  # Display accuracy with two decimals
 
 # Mostrar el reporte de clasificación
 print(classification_report(y_test, y_pred))
-
-print("End of the training script")
 
 # Función para clasificar un nuevo tweet
 def classify_tweet(tweet):
