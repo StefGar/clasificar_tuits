@@ -8,6 +8,7 @@ import nltk
 from nltk.corpus import stopwords
 import string
 from sklearn.metrics import classification_report
+from sklearn.ensemble import RandomForestClassifier
 
 # Descargar stopwords si no están disponibles
 try:
@@ -62,7 +63,7 @@ X_train_vec = vectorizer.fit_transform(X_train)
 X_test_vec = vectorizer.transform(X_test)
 
 # Entrenamiento del modelo
-model = MultinomialNB()
+model = RandomForestClassifier(n_estimators=100, random_state=42)
 model.fit(X_train_vec, y_train)
 
 # Predicción y evaluación
