@@ -127,7 +127,7 @@ def display_all_tweets_from_csv():
         print("The 'tweets.csv' file does not exist.")
 
 def display_classification_report(datos):
-    print(classification_report(datos['label'], datos['predicted_label']))
+    print(classification_report(datos['label'], datos['predicted_label'], zero_division=0))
 
 def display_all_tweets_with_labels(datos):
     print(datos[['tweet', 'label', 'predicted_label']].to_string(index=False))
