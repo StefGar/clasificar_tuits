@@ -145,5 +145,9 @@ def main():
     accuracy = get_model_accuracy()
     print(f'Model Accuracy: {accuracy:.2f}')
 
+    # Desplegar todos los tweets
+    display_all_tweets(datos)
+
 if __name__ == "__main__":
     main()
+    display_all_tweets_from_csv()
