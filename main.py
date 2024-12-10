@@ -132,6 +132,14 @@ def display_classification_report(datos):
 def display_all_tweets_with_labels(datos):
     print(datos[['tweet', 'label', 'predicted_label']].to_string(index=False))
 
+def display_misclassified_tweets(datos):
+    misclassified = datos[datos['label'] != datos['predicted_label']]
+    if not misclassified.empty:
+        print("Misclassified tweets:")
+        print(misclassified[['tweet', 'label', 'predicted_label']].to_string(index=False))
+    else:
+        print("No misclassified tweets found.")
+
 def clear_console():
     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -167,6 +175,9 @@ def main():
     
     # Mostrar más tweets con etiquetas y etiquetas predichas
     display_all_tweets_with_labels(datos)
+    
+    # Mostrar tweets mal clasificados
+    display_misclassified_tweets(datos)
 
 if __name__ == "__main__":
     main()
